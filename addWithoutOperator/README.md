@@ -19,4 +19,4 @@ Considerate two numbers 85 and 67.
 Now we considerate with binary:
 1. If we add two binary numbers and ignore carry, it would be **XOR**.
 2. If we add two binary numbers and only care about carry, then you will find it would be **AND**.
-3. Finally, recurse util no carry.
+3. Finally, recurse until no carry.
