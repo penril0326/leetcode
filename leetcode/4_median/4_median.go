@@ -23,14 +23,19 @@ func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 		j := halfLen - i
 
 		if (i < max1) && (nums2[j-1] > nums1[i]) {
+			// i太小(nums1提供太少元素)
 			min1 = i + 1
 		} else if (i > min1) && (nums1[i-1] > nums2[j]) {
+			// i太大(nums1提供太多元素)
 			max1 = i - 1
 		} else {
+			// i，j都正確了
 			maxLeft := 0
 			if 0 == i {
+				// i=0表示nums1一個元素都沒提供
 				maxLeft = nums2[j-1]
 			} else if 0 == j {
+				// j=0表示nums2一個元素都沒有提供
 				maxLeft = nums1[i-1]
 			} else {
 				maxLeft = int(math.Max(float64(nums1[i-1]), float64(nums2[j-1])))
