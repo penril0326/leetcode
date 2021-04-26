@@ -43,7 +43,7 @@ func (q priorityQ) Swap(i, j int) {
 }
 
 func (q priorityQ) Less(i, j int) bool {
-	// golang提供的heap是min heap
+	// golang提供的heap是min heap，此題用max heap比較方便
 	return q[i].count > q[j].count
 }
 
