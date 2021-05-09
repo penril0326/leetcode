@@ -6,22 +6,24 @@ func checkSubarraySum(nums []int, k int) bool {
 		return false
 	}
 
+	// key = remainder, value = index of nums
 	dp := make(map[int]int)
 	dp[0] = -1
 
 	sum := 0
 	for i := 0; i < length; i++ {
 		sum += nums[i]
+		t := 0
 		if 0 != k {
-			sum = sum % k
+			t = sum % k
 		}
 
-		if value, isExist := dp[sum]; true == isExist {
-			if 1 < (i - value) {
+		if index, isExist := dp[t]; true == isExist {
+			if 1 < (i - index) {
 				return true
 			}
 		} else {
-			dp[sum] = i
+			dp[t] = i
 		}
 	}
 
