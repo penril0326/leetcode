@@ -1,6 +1,7 @@
 package coin_change
 
 func coinChange(coins []int, amount int) int {
+	// index = amount (0~amount), value = fewest coins
 	dp := make([]int, amount+1)
 
 	for i := 1; i < len(dp); i++ {
