@@ -1,12 +1,8 @@
 package same_tree
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+import "practice/leetcode"
 
-func isSameTree(p *TreeNode, q *TreeNode) bool {
+func isSameTree(p *leetcode.TreeNode, q *leetcode.TreeNode) bool {
 	if (p == nil) && (q == nil) {
 		return true
 	} else if ((p != nil) && (q == nil)) ||
