@@ -1,11 +1,10 @@
 package longest_word
 
-import (
-	"sort"
-)
+import "sort"
 
 type stringList []string
 
+// use sort
 func findLongestWord(s string, dictionary []string) string {
 	d := stringList{}
 	d = append(d, dictionary...)
@@ -39,6 +38,45 @@ func findLongestWord(s string, dictionary []string) string {
 	}
 
 	return d[resultIdx]
+}
+
+// without sort
+func findLongestWord2(s string, dictionary []string) string {
+	result := ""
+	for _, word := range dictionary {
+		if len(word) > len(s) {
+			continue
+		}
+
+		wordIdx := 0
+		for _, r := range s {
+			if rune(word[wordIdx]) == r {
+				wordIdx++
+
+				if wordIdx == len(word) {
+					break
+				}
+			}
+		}
+
+		if (wordIdx == len(word)) && (len(word) >= len(result)) {
+			if len(word) > len(result) {
+				result = word
+			} else {
+				result = smallString(word, result)
+			}
+		}
+	}
+
+	return result
+}
+
+func smallString(s1, s2 string) string {
+	if s1 < s2 {
+		return s1
+	}
+
+	return s2
 }
 
 func (sl stringList) Len() int {
