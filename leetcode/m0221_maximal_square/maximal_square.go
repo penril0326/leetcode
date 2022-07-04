@@ -44,3 +44,50 @@ func maximalSquare(matrix [][]byte) int {
 }
 
 // DP
+func maximalSquareDP(matrix [][]byte) int {
+	row, column := len(matrix), 0
+	if row > 0 {
+		column = len(matrix[0])
+	}
+
+	dp := make([][]int, 0)
+	for i := 0; i < row; i++ {
+		temp := make([]int, column)
+		dp = append(dp, temp)
+	}
+
+	max := 0
+	for i := 0; i < row; i++ {
+		for j := 0; j < column; j++ {
+			if matrix[i][j] == '1' {
+				if (i == 0) || (j == 0) {
+					dp[i][j] = 1
+				} else {
+					dp[i][j] = min(dp[i-1][j], dp[i-1][j-1], dp[i][j-1]) + 1
+				}
+
+				if dp[i][j] > max {
+					max = dp[i][j]
+				}
+			}
+		}
+	}
+
+	return max * max
+}
+
+func min(a, b, c int) int {
+	if a > b {
+		if b > c {
+			return c
+		}
+
+		return b
+	} else {
+		if a > c {
+			return c
+		}
+
+		return a
+	}
+}
