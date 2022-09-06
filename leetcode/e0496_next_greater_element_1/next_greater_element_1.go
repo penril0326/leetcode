@@ -11,8 +11,6 @@ func nextGreaterElement(nums1 []int, nums2 []int) []int {
 		}
 	}
 
-	// fmt.Println(indexTable)
-
 	result := make([]int, 0)
 	for i := 0; i < len(nums1); i++ {
 		index := indexTable[nums1[i]]
