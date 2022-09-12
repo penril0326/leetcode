@@ -4,7 +4,7 @@ import "practice/leetcode"
 
 // Stack
 func postorderTraversal(root *leetcode.TreeNode) []int {
-	if root != nil {
+	if root == nil {
 		return []int{}
 	}
 
