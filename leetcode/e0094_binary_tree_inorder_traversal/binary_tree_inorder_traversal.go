@@ -29,13 +29,14 @@ func inorderTraversal(root *leetcode.TreeNode) []int {
 	result := []int{}
 	stack := myStack{}
 	for (cur != nil) || (stack.isEmpty() == false) {
-		for cur != nil {
+		if cur != nil {
 			stack.Push(cur)
 			cur = cur.Left
+		} else {
+			cur = stack.Pop()
+			result = append(result, cur.Val)
+			cur = cur.Right
 		}
-		cur = stack.Pop()
-		result = append(result, cur.Val)
-		cur = cur.Right
 	}
 
 	return result
