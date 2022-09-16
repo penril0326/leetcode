@@ -3,6 +3,78 @@ package palindromelinkedlist
 import "practice/leetcode"
 
 // Time complexity: O(n)
+// Space complexity: O(n)
+type myStack struct {
+	stack []*leetcode.ListNode
+}
+
+func constructor() myStack {
+	return myStack{
+		stack: make([]*leetcode.ListNode, 0),
+	}
+}
+
+func (s myStack) isEmpty() bool {
+	return len(s.stack) == 0
+}
+
+func (s myStack) top() *leetcode.ListNode {
+	if len(s.stack) > 0 {
+		return s.stack[len(s.stack)-1]
+	}
+
+	return nil
+}
+
+func (s *myStack) push(node *leetcode.ListNode) {
+	if node != nil {
+		s.stack = append(s.stack, node)
+	}
+}
+
+func (s *myStack) pop() *leetcode.ListNode {
+	if len(s.stack) > 0 {
+		top := s.top()
+		s.stack = s.stack[:len(s.stack)-1]
+		return top
+	}
+
+	return nil
+}
+
+func isPalindrome(head *leetcode.ListNode) bool {
+	if head == nil {
+		return true
+	}
+
+	slow, fast := head, head.Next
+	stack := constructor()
+	for (fast.Next != nil) && (fast.Next.Next != nil) {
+		stack.push(slow)
+		slow = slow.Next
+		fast = fast.Next.Next
+	}
+
+	if fast.Next != nil {
+		stack.push(slow)
+	}
+
+	slow = slow.Next
+
+	for slow != nil {
+		top := stack.pop()
+		if top.Val != slow.Val {
+			return false
+		}
+
+		slow = slow.Next
+	}
+
+	return true
+}
+
+// -----------------------------
+// Time complexity: O(n)
 // Space complexity: O(1)
 func isPalindromeSplit(head *leetcode.ListNode) bool {
 	if head == nil {
