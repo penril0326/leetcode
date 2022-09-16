@@ -1,0 +1,80 @@
+package narytreepreordertraversal
+
+import "practice/leetcode"
+
+// Time complexity: O(n)
+// Space complexity: O(n)
+func preorder(root *leetcode.NaryNode) []int {
+	result := make([]int, 0)
+	traversal(root, &result)
+	return result
+}
+
+func traversal(root *leetcode.NaryNode, result *[]int) {
+	if root != nil {
+		*result = append(*result, root.Val)
+		for _, child := range root.Children {
+			traversal(child, result)
+		}
+	}
+}
+
+// -----------------------------
+// Time complexity: O(n)
+// Space complexity: O(n)
+type myStack struct {
+	stack []*leetcode.NaryNode
+}
+
+func stackConstructor() myStack {
+	return myStack{
+		stack: make([]*leetcode.NaryNode, 0),
+	}
+}
+
+func (s myStack) top() *leetcode.NaryNode {
+	if len(s.stack) > 0 {
+		return s.stack[len(s.stack)-1]
+	}
+
+	return nil
+}
+
+func (s *myStack) push(node *leetcode.NaryNode) {
+	s.stack = append(s.stack, node)
+}
+
+func (s *myStack) pop() *leetcode.NaryNode {
+	if len(s.stack) > 0 {
+		top := s.top()
+		s.stack = s.stack[:len(s.stack)-1]
+
+		return top
+	}
+
+	return nil
+}
+
+func (s myStack) isEmpty() bool {
+	return len(s.stack) == 0
+}
+
+func preorderStack(root *leetcode.NaryNode) []int {
+	if root == nil {
+		return []int{}
+	}
+
+	result := []int{}
+	stack := stackConstructor()
+	stack.push(root)
+	for !stack.isEmpty() {
+		cur := stack.pop()
+		result = append(result, cur.Val)
+
+		for i := len(cur.Children) - 1; i >= 0; i-- {
+			stack.push(cur.Children[i])
+		}
+	}
+
+	return result
+}

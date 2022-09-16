@@ -10,3 +10,8 @@ type ListNode struct {
 	Val  int
 	Next *ListNode
 }
+
+type NaryNode struct {
+	Val      int
+	Children []*NaryNode
+}
