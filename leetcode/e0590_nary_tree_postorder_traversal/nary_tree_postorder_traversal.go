@@ -22,6 +22,8 @@ func traversal(root *leetcode.NaryNode, result *[]int) {
 }
 
 // -----------------------------
+// Time complexity: O(n)
+// Space complexity: O(n)
 type myStack struct {
 	stack []*leetcode.NaryNode
 }
