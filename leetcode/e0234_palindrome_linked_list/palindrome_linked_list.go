@@ -76,6 +76,7 @@ func isPalindrome(head *leetcode.ListNode) bool {
 // -----------------------------
 // Time complexity: O(n)
 // Space complexity: O(1)
+// This approach should be medium level
 func isPalindromeSplit(head *leetcode.ListNode) bool {
 	if head == nil {
 		return true
