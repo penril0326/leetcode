@@ -58,7 +58,7 @@ func handleBackspace(s string) string {
 	result := ""
 	for !stk.isEmpty() {
 		r := stk.pop()
-		result = string(r) + result
+		result += string(r)
 	}
 
 	return result
@@ -78,7 +78,7 @@ func handleBackspace2(s string) string {
 		if s[i] == '#' {
 			count++
 		} else if count == 0 {
-			newStr = string(s[i]) + newStr
+			newStr += string(s[i])
 		} else {
 			count--
 		}
