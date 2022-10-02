@@ -2,15 +2,31 @@ package flattenbinarytreetolinkedlist
 
 import "practice/leetcode"
 
-/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
+// Time complexity: O(n)
+// Space complexity: O(1)
+func flatten(root *leetcode.TreeNode) {
+	if root == nil {
+		return
+	}
 
+	cur := root
+	for cur != nil {
+		if cur.Left != nil {
+			rightMost := cur.Left
+			for rightMost.Right != nil {
+				rightMost = rightMost.Right
+			}
+
+			rightMost.Right = cur.Right
+			cur.Right = cur.Left
+			cur.Left = nil
+		}
+
+		cur = cur.Right
+	}
+}
+
+// -----------------------------
 // Time complexity: O(n)
 // Space complexity: O(n)
 type myStack struct {
@@ -51,7 +67,7 @@ func (s *myStack) pop() *leetcode.TreeNode {
 	return nil
 }
 
-func flatten(root *leetcode.TreeNode) {
+func flattenStack(root *leetcode.TreeNode) {
 	if root == nil {
 		return
 	}
