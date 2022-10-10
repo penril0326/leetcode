@@ -75,3 +75,65 @@ func reorderList(head *leetcode.ListNode) {
 		head.Next = nil
 	}
 }
+
+// -----------------------------
+// Time complexity: O(n)
+// Space complexity: O(n)
+func reorderListRecursive(head *leetcode.ListNode) {
+	findNextInsert(head, head)
+}
+
+func findNextInsert(head, curr *leetcode.ListNode) *leetcode.ListNode {
+	if curr.Next != nil {
+		head = findNextInsert(head, curr.Next)
+	}
+
+	if head == nil {
+		return nil
+	}
+
+	second := head.Next
+
+	if (curr == head) || (curr == second) {
+		curr.Next = nil
+		return nil
+	}
+
+	head.Next = curr
+	curr.Next = second
+	return second
+}
+
+// -----------------------------
+// Time complexity: O(n)
+// Space complexity: O(1)
+func reorderListIterative(head *leetcode.ListNode) {
+	// find middle
+	slow, fast := head, head
+	for (fast != nil) && (fast.Next != nil) {
+		slow = slow.Next
+		fast = fast.Next.Next
+	}
+
+	// reverse second part
+	var prev *leetcode.ListNode
+	cur := slow
+	for cur != nil {
+		tmp := cur.Next
+		cur.Next = prev
+		prev = cur
+		cur = tmp
+	}
+
+	// merge two linked lists
+	first, second := head, prev
+	for second.Next != nil {
+		tmp := first.Next
+		first.Next = second
+		first = tmp
+
+		tmp = second.Next
+		second.Next = first
+		second = tmp
+	}
+}
