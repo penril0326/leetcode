@@ -5,7 +5,7 @@ type twoStack struct {
 	minStack []int
 }
 
-func Constructor() twoStack {
+func ConstructorTwoStack() twoStack {
 	return twoStack{
 		stack:    make([]int, 0),
 		minStack: make([]int, 0),
