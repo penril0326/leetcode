@@ -2,6 +2,8 @@ package validparentheses
 
 import "practice/leetcode"
 
+// Time complexity: O(N)
+// Space complexity: O(N)
 func isValid(s string) bool {
 	stack := leetcode.NewStack()
 	for _, r := range s {
