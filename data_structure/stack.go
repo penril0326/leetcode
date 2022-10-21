@@ -1,38 +1,39 @@
-package stack
+package datastructure
 
-type MyStack []interface{}
-
-func NewStack() MyStack {
-	return make([]interface{}, 0)
+type myStack struct {
+	stack []interface{}
 }
 
-func (s MyStack) Top() interface{} {
-	if len(s) == 0 {
-		return nil
+func NewStack() myStack {
+	return myStack{
+		stack: make([]interface{}, 0),
+	}
+}
+
+func (s myStack) IsEmpty() bool {
+	return len(s.stack) == 0
+}
+
+func (s myStack) Top() interface{} {
+	if !s.IsEmpty() {
+		return s.stack[len(s.stack)-1]
 	}
 
-	return s[len(s)-1]
+	return nil
 }
 
-func (s *MyStack) Pop() interface{} {
-	if s == nil || len(*s) == 0 {
-		return nil
+func (s *myStack) Push(node interface{}) {
+	if s != nil {
+		s.stack = append(s.stack, node)
+	}
+}
+
+func (s *myStack) Pop() interface{} {
+	if (s != nil) && !s.IsEmpty() {
+		top := s.Top()
+		s.stack = s.stack[:len(s.stack)-1]
+		return top
 	}
 
-	top := (*s)[len(*s)-1]
-	*s = (*s)[:len(*s)-1]
-
-	return top
-}
-
-func (s *MyStack) Push(v interface{}) {
-	if s == nil {
-		*s = NewStack()
-	}
-
-	*s = append(*s, v)
-}
-
-func (s MyStack) Len() int {
-	return len(s)
+	return nil
 }
