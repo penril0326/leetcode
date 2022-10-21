@@ -1,11 +1,11 @@
 package validparentheses
 
-import "practice/leetcode"
+import datastructure "practice/data_structure"
 
 // Time complexity: O(N)
 // Space complexity: O(N)
 func isValid(s string) bool {
-	stack := leetcode.NewStack()
+	stack := datastructure.NewStack()
 	for _, r := range s {
 		top, _ := stack.Top().(rune)
 		if isPair(top, r) {

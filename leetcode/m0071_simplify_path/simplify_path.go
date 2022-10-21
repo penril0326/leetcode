@@ -1,7 +1,7 @@
 package simplifypath
 
 import (
-	"practice/leetcode"
+	datastructure "practice/data_structure"
 	"strings"
 )
 
@@ -9,7 +9,7 @@ import (
 // Space complexity: O(n)
 func simplifyPath(path string) string {
 	directorys := strings.Split(path, "/") // T: O(n) ?
-	stack := leetcode.NewStack()           // S: O(n)
+	stack := datastructure.NewStack()      // S: O(n)
 	for _, dir := range directorys {       // T: O(n)
 		if dir == ".." {
 			stack.Pop()
@@ -20,8 +20,8 @@ func simplifyPath(path string) string {
 		}
 	}
 
-	outStack := leetcode.NewStack() // S: O(n)
-	for !stack.IsEmpty() {          // T: O(n)
+	outStack := datastructure.NewStack() // S: O(n)
+	for !stack.IsEmpty() {               // T: O(n)
 		outStack.Push(stack.Pop())
 	}
 

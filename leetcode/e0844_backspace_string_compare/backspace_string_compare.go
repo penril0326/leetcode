@@ -1,5 +1,7 @@
 package backspacestringcompare
 
+import datastructure "practice/data_structure"
+
 // Time complexity: O(m+n), m and n are length of s and t respectively
 // Space complexity: O(m+n)
 type myStack struct {
@@ -44,20 +46,20 @@ func backspaceCompare(s string, t string) bool {
 }
 
 func handleBackspace(s string) string {
-	stk := constructor()
+	stk := datastructure.NewStack()
 	for _, r := range s {
 		if r == '#' {
-			if !stk.isEmpty() {
-				stk.pop()
+			if !stk.IsEmpty() {
+				stk.Pop()
 			}
 		} else {
-			stk.push(r)
+			stk.Push(r)
 		}
 	}
 
 	result := ""
-	for !stk.isEmpty() {
-		r := stk.pop()
+	for !stk.IsEmpty() {
+		r := stk.Pop().(rune)
 		result += string(r)
 	}
 
