@@ -1,5 +1,5 @@
 module practice
 
-go 1.13
+go 1.18
 
 require golang.org/x/tour v0.1.0
