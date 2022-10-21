@@ -1,11 +1,11 @@
 package validatestacksequences
 
-import "practice/leetcode"
+import datastructure "practice/data_structure"
 
 // Time complexity: O(n)
 // Space complexity: O(n)
 func validateStackSequences(pushed []int, popped []int) bool {
-	s := leetcode.NewStack()
+	s := datastructure.NewStack()
 	j := 0
 	for _, i := range pushed {
 		s.Push(i)
