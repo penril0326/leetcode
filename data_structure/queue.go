@@ -47,6 +47,7 @@ func (q *myQueue) Dequeue() interface{} {
 		tmp := q.head
 		q.head = q.head.next
 		q.length--
+		tmp.next = nil
 		return tmp.val
 	}
 
