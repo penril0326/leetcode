@@ -1,5 +1,7 @@
 package dailytemperatures
 
+import datastructure "practice/data_structure"
+
 // Time complexity: O(n^2)
 // Space complexity: O(1)
 func dailyTemperatures(temperatures []int) []int {
@@ -28,3 +30,19 @@ func dailyTemperatures(temperatures []int) []int {
 }
 
 // -----------------------------
+// Time complexity: O(n)
+// Space complexity: O(n)
+func dailyTemperaturesMonotonicDecreasingStack(temperatures []int) []int {
+	result := make([]int, len(temperatures))
+	s := datastructure.NewStack()
+	for idx, temperature := range temperatures {
+		for !s.IsEmpty() && (temperature > temperatures[s.Top().(int)]) {
+			top := s.Pop().(int)
+			result[top] = idx - top
+		}
+
+		s.Push(idx)
+	}
+
+	return result
+}
