@@ -1,6 +1,6 @@
 package datastructure
 
-type myQueue struct {
+type MyQueue struct {
 	head   *node
 	tail   *node
 	length int
@@ -11,11 +11,11 @@ type node struct {
 	next *node
 }
 
-func NewQue() myQueue {
-	return myQueue{}
+func NewQue() MyQueue {
+	return MyQueue{}
 }
 
-func (q myQueue) Front() interface{} {
+func (q MyQueue) Front() interface{} {
 	if q.head != nil {
 		return q.head.val
 	}
@@ -23,11 +23,11 @@ func (q myQueue) Front() interface{} {
 	return nil
 }
 
-func (q myQueue) IsEmpty() bool {
+func (q MyQueue) IsEmpty() bool {
 	return q.length == 0
 }
 
-func (q *myQueue) Enqueue(v interface{}) {
+func (q *MyQueue) Enqueue(v interface{}) {
 	if q.head == nil {
 		q.head = new(node)
 		q.head.val = v
@@ -42,7 +42,7 @@ func (q *myQueue) Enqueue(v interface{}) {
 	q.length++
 }
 
-func (q *myQueue) Dequeue() interface{} {
+func (q *MyQueue) Dequeue() interface{} {
 	if q.length > 0 {
 		tmp := q.head
 		q.head = q.head.next
@@ -54,6 +54,6 @@ func (q *myQueue) Dequeue() interface{} {
 	return nil
 }
 
-func (q myQueue) Length() int {
+func (q MyQueue) Length() int {
 	return q.length
 }

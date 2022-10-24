@@ -46,7 +46,7 @@ func Test_myQueue_Front(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			q := myQueue{
+			q := MyQueue{
 				head:   tt.fields.head,
 				tail:   tt.fields.tail,
 				length: tt.fields.length,
@@ -102,7 +102,7 @@ func Test_myQueue_IsEmpty(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			q := myQueue{
+			q := MyQueue{
 				head:   tt.fields.head,
 				tail:   tt.fields.tail,
 				length: tt.fields.length,
