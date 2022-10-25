@@ -46,3 +46,25 @@ func dailyTemperaturesMonotonicDecreasingStack(temperatures []int) []int {
 
 	return result
 }
+
+// -----------------------------
+// Time complexity: O(n)
+// Space complexity: O(1)
+func dailyTemperaturesOptimizeArray(temperatures []int) []int {
+	result := make([]int, len(temperatures))
+	hottest := 0
+	for curDay := len(temperatures) - 1; curDay >= 0; curDay-- {
+		if temperatures[curDay] >= hottest {
+			hottest = temperatures[curDay]
+			continue
+		}
+
+		day := 1
+		for temperatures[curDay] >= temperatures[curDay+day] {
+			day += result[curDay+day]
+		}
+		result[curDay] = day
+	}
+
+	return result
+}
