@@ -1,16 +1,18 @@
 package numberofrecentcalls
 
-import datastructure "practice/data_structure"
+import (
+	"practice/data_structure/queue"
+)
 
 // Time complexity: O(1)
 // Space complexity: O(1)
 type RecentCounter struct {
-	que datastructure.MyQueue
+	que queue.MyQueue
 }
 
 func Constructor() RecentCounter {
 	return RecentCounter{
-		que: datastructure.NewQue(),
+		que: queue.NewQue(),
 	}
 }
 
