@@ -1,7 +1,7 @@
 package simplifypath
 
 import (
-	datastructure "practice/data_structure"
+	"practice/data_structure/stack"
 	"strings"
 )
 
@@ -9,20 +9,20 @@ import (
 // Space complexity: O(n)
 func simplifyPath(path string) string {
 	directorys := strings.Split(path, "/") // T: O(n) ?
-	stack := datastructure.NewStack()      // S: O(n)
+	stk := stack.NewStack()                // S: O(n)
 	for _, dir := range directorys {       // T: O(n)
 		if dir == ".." {
-			stack.Pop()
+			stk.Pop()
 		} else if (dir == ".") || (dir == "") {
 			continue
 		} else {
-			stack.Push(dir)
+			stk.Push(dir)
 		}
 	}
 
-	outStack := datastructure.NewStack() // S: O(n)
-	for !stack.IsEmpty() {               // T: O(n)
-		outStack.Push(stack.Pop())
+	outStack := stack.NewStack() // S: O(n)
+	for !stk.IsEmpty() {         // T: O(n)
+		outStack.Push(stk.Pop())
 	}
 
 	out := []string{}         // S: O(n)

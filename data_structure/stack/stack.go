@@ -1,4 +1,11 @@
-package datastructure
+package stack
+
+type MyStack interface {
+	IsEmpty() bool
+	Top() interface{}
+	Push(v interface{})
+	Pop() interface{}
+}
 
 type myStack struct {
 	stack []interface{}
