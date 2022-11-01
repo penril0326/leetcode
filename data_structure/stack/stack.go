@@ -11,8 +11,8 @@ type myStack struct {
 	stack []interface{}
 }
 
-func NewStack() myStack {
-	return myStack{
+func NewStack() MyStack {
+	return &myStack{
 		stack: make([]interface{}, 0),
 	}
 }
