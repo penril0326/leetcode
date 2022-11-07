@@ -35,6 +35,9 @@ func longestOnesOptimized(nums []int, k int) int {
 			zero++
 		}
 
+		// first occur zero > k which mean now the window size is the maximum
+		// now we move left every time, if we found zero and throw out, we fix left again.
+		// If right still < len(nums), the window size only grow up.
 		if zero > k {
 			if nums[left] == 0 {
 				zero--
