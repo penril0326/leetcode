@@ -25,3 +25,24 @@ func longestOnes(nums []int, k int) int {
 
 	return max
 }
+
+// Time complexity: O(N)
+// Space complexity: O(1)
+func longestOnesOptimized(nums []int, k int) int {
+	zero, left := 0, 0
+	for right := 0; right < len(nums); right++ {
+		if nums[right] == 0 {
+			zero++
+		}
+
+		if zero > k {
+			if nums[left] == 0 {
+				zero--
+			}
+
+			left++
+		}
+	}
+
+	return len(nums) - left
+}
