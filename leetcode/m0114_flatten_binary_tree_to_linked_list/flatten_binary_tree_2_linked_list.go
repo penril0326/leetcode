@@ -1,10 +1,12 @@
 package flattenbinarytreetolinkedlist
 
-import "practice/leetcode"
+import (
+	"practice/data_structure/node"
+)
 
 // Time complexity: O(n)
 // Space complexity: O(1)
-func flatten(root *leetcode.TreeNode) {
+func flatten(root *node.TreeNode) {
 	if root == nil {
 		return
 	}
@@ -30,16 +32,16 @@ func flatten(root *leetcode.TreeNode) {
 // Time complexity: O(n)
 // Space complexity: O(n)
 type myStack struct {
-	stack []*leetcode.TreeNode
+	stack []*node.TreeNode
 }
 
 func constructor() myStack {
 	return myStack{
-		stack: make([]*leetcode.TreeNode, 0),
+		stack: make([]*node.TreeNode, 0),
 	}
 }
 
-func (s myStack) top() *leetcode.TreeNode {
+func (s myStack) top() *node.TreeNode {
 	if !s.isEmpty() {
 		return s.stack[len(s.stack)-1]
 	}
@@ -51,13 +53,13 @@ func (s myStack) isEmpty() bool {
 	return len(s.stack) == 0
 }
 
-func (s *myStack) push(n *leetcode.TreeNode) {
+func (s *myStack) push(n *node.TreeNode) {
 	if s != nil {
 		s.stack = append(s.stack, n)
 	}
 }
 
-func (s *myStack) pop() *leetcode.TreeNode {
+func (s *myStack) pop() *node.TreeNode {
 	if (s != nil) && !s.isEmpty() {
 		top := s.top()
 		s.stack = s.stack[:len(s.stack)-1]
@@ -67,7 +69,7 @@ func (s *myStack) pop() *leetcode.TreeNode {
 	return nil
 }
 
-func flattenStack(root *leetcode.TreeNode) {
+func flattenStack(root *node.TreeNode) {
 	if root == nil {
 		return
 	}
@@ -95,11 +97,11 @@ func flattenStack(root *leetcode.TreeNode) {
 // -----------------------------
 // Time complexity: O(n)
 // Space complexity: O(n)
-func flattenRecursive(root *leetcode.TreeNode) {
+func flattenRecursive(root *node.TreeNode) {
 	preorder(root)
 }
 
-func preorder(node *leetcode.TreeNode) *leetcode.TreeNode {
+func preorder(node *node.TreeNode) *node.TreeNode {
 	if node == nil {
 		return nil
 	}

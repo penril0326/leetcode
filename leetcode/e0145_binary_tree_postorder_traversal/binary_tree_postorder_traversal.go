@@ -1,9 +1,9 @@
 package binarytreepostordertraversal
 
-import "practice/leetcode"
+import "practice/data_structure/node"
 
 // Stack
-func postorderTraversal(root *leetcode.TreeNode) []int {
+func postorderTraversal(root *node.TreeNode) []int {
 	if root == nil {
 		return []int{}
 	}
@@ -34,40 +34,40 @@ func postorderTraversal(root *leetcode.TreeNode) []int {
 	return result
 }
 
-type myStack []*leetcode.TreeNode
+type myStack []*node.TreeNode
 
 func (s myStack) isEmpty() bool {
 	return len(s) == 0
 }
 
-func (s *myStack) pop() *leetcode.TreeNode {
+func (s *myStack) pop() *node.TreeNode {
 	top := (*s)[len(*s)-1]
 	*s = (*s)[:len(*s)-1]
 
 	return top
 }
 
-func (s *myStack) push(n *leetcode.TreeNode) {
+func (s *myStack) push(n *node.TreeNode) {
 	if s == nil {
-		*s = make([]*leetcode.TreeNode, 0)
+		*s = make([]*node.TreeNode, 0)
 	}
 
 	*s = append(*s, n)
 }
 
-func (s myStack) top() *leetcode.TreeNode {
+func (s myStack) top() *node.TreeNode {
 	return s[len(s)-1]
 }
 
 // Recursive
-func postorderTraversalRecursive(root *leetcode.TreeNode) []int {
+func postorderTraversalRecursive(root *node.TreeNode) []int {
 	result := make([]int, 0)
 	traversal(root, &result)
 
 	return result
 }
 
-func traversal(root *leetcode.TreeNode, result *[]int) {
+func traversal(root *node.TreeNode, result *[]int) {
 	if root != nil {
 		traversal(root.Left, result)
 		traversal(root.Right, result)

@@ -1,8 +1,8 @@
 package sort_list
 
-import "practice/leetcode"
+import "practice/data_structure/node"
 
-func sortList(head *leetcode.ListNode) *leetcode.ListNode {
+func sortList(head *node.ListNode) *node.ListNode {
 	if (head == nil) || (head.Next == nil) {
 		return head
 	}
@@ -18,8 +18,8 @@ func sortList(head *leetcode.ListNode) *leetcode.ListNode {
 	return merge(sortList(head), sortList(slow))
 }
 
-func merge(left, right *leetcode.ListNode) *leetcode.ListNode {
-	head := &leetcode.ListNode{
+func merge(left, right *node.ListNode) *node.ListNode {
+	head := &node.ListNode{
 		Val: -1,
 	}
 

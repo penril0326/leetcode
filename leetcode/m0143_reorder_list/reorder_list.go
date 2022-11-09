@@ -1,16 +1,18 @@
 package reorderlist
 
-import "practice/leetcode"
+import (
+	"practice/data_structure/node"
+)
 
 // Time complexity: O(n)
 // Space complexity: O(n)
 type myStack struct {
-	stack []*leetcode.ListNode
+	stack []*node.ListNode
 }
 
 func newStack() myStack {
 	return myStack{
-		stack: make([]*leetcode.ListNode, 0),
+		stack: make([]*node.ListNode, 0),
 	}
 }
 
@@ -18,7 +20,7 @@ func (s myStack) isEmpty() bool {
 	return len(s.stack) == 0
 }
 
-func (s myStack) top() *leetcode.ListNode {
+func (s myStack) top() *node.ListNode {
 	if !s.isEmpty() {
 		return s.stack[len(s.stack)-1]
 	}
@@ -26,13 +28,13 @@ func (s myStack) top() *leetcode.ListNode {
 	return nil
 }
 
-func (s *myStack) push(node *leetcode.ListNode) {
+func (s *myStack) push(node *node.ListNode) {
 	if s != nil {
 		s.stack = append(s.stack, node)
 	}
 }
 
-func (s *myStack) pop() *leetcode.ListNode {
+func (s *myStack) pop() *node.ListNode {
 	if (s != nil) && !s.isEmpty() {
 		top := s.top()
 		s.stack = s.stack[:len(s.stack)-1]
@@ -42,7 +44,7 @@ func (s *myStack) pop() *leetcode.ListNode {
 	return nil
 }
 
-func reorderList(head *leetcode.ListNode) {
+func reorderList(head *node.ListNode) {
 	if (head == nil) || (head.Next == nil) {
 		return
 	}
@@ -79,11 +81,11 @@ func reorderList(head *leetcode.ListNode) {
 // -----------------------------
 // Time complexity: O(n)
 // Space complexity: O(n)
-func reorderListRecursive(head *leetcode.ListNode) {
+func reorderListRecursive(head *node.ListNode) {
 	findNextInsert(head, head)
 }
 
-func findNextInsert(head, curr *leetcode.ListNode) *leetcode.ListNode {
+func findNextInsert(head, curr *node.ListNode) *node.ListNode {
 	if curr.Next != nil {
 		head = findNextInsert(head, curr.Next)
 	}
@@ -107,7 +109,7 @@ func findNextInsert(head, curr *leetcode.ListNode) *leetcode.ListNode {
 // -----------------------------
 // Time complexity: O(n)
 // Space complexity: O(1)
-func reorderListIterative(head *leetcode.ListNode) {
+func reorderListIterative(head *node.ListNode) {
 	// find middle
 	slow, fast := head, head
 	for (fast != nil) && (fast.Next != nil) {
@@ -116,7 +118,7 @@ func reorderListIterative(head *leetcode.ListNode) {
 	}
 
 	// reverse second part
-	var prev *leetcode.ListNode
+	var prev *node.ListNode
 	cur := slow
 	for cur != nil {
 		tmp := cur.Next

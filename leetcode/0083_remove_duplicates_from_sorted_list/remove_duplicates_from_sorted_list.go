@@ -1,8 +1,8 @@
 package removeduplicatesfromsortedlist
 
-import "practice/leetcode"
+import "practice/data_structure/node"
 
-func deleteDuplicates(head *leetcode.ListNode) *leetcode.ListNode {
+func deleteDuplicates(head *node.ListNode) *node.ListNode {
 	if head == nil {
 		return nil
 	} else if head.Next == nil {

@@ -1,8 +1,8 @@
 package maximum_depth
 
-import "practice/leetcode"
+import "practice/data_structure/node"
 
-func maxDepth(root *leetcode.TreeNode) int {
+func maxDepth(root *node.TreeNode) int {
 	if root == nil {
 		return 0
 	}

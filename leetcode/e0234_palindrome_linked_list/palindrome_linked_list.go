@@ -1,16 +1,18 @@
 package palindromelinkedlist
 
-import "practice/leetcode"
+import (
+	"practice/data_structure/node"
+)
 
 // Time complexity: O(n)
 // Space complexity: O(n)
 type myStack struct {
-	stack []*leetcode.ListNode
+	stack []*node.ListNode
 }
 
 func constructor() myStack {
 	return myStack{
-		stack: make([]*leetcode.ListNode, 0),
+		stack: make([]*node.ListNode, 0),
 	}
 }
 
@@ -18,7 +20,7 @@ func (s myStack) isEmpty() bool {
 	return len(s.stack) == 0
 }
 
-func (s myStack) top() *leetcode.ListNode {
+func (s myStack) top() *node.ListNode {
 	if len(s.stack) > 0 {
 		return s.stack[len(s.stack)-1]
 	}
@@ -26,13 +28,13 @@ func (s myStack) top() *leetcode.ListNode {
 	return nil
 }
 
-func (s *myStack) push(node *leetcode.ListNode) {
+func (s *myStack) push(node *node.ListNode) {
 	if node != nil {
 		s.stack = append(s.stack, node)
 	}
 }
 
-func (s *myStack) pop() *leetcode.ListNode {
+func (s *myStack) pop() *node.ListNode {
 	if len(s.stack) > 0 {
 		top := s.top()
 		s.stack = s.stack[:len(s.stack)-1]
@@ -42,7 +44,7 @@ func (s *myStack) pop() *leetcode.ListNode {
 	return nil
 }
 
-func isPalindrome(head *leetcode.ListNode) bool {
+func isPalindrome(head *node.ListNode) bool {
 	if head == nil {
 		return true
 	}
@@ -77,7 +79,7 @@ func isPalindrome(head *leetcode.ListNode) bool {
 // Time complexity: O(n)
 // Space complexity: O(1)
 // This approach should be medium level
-func isPalindromeSplit(head *leetcode.ListNode) bool {
+func isPalindromeSplit(head *node.ListNode) bool {
 	if head == nil {
 		return true
 	}
@@ -99,8 +101,8 @@ func isPalindromeSplit(head *leetcode.ListNode) bool {
 	return true
 }
 
-func reverseLinkedList(head *leetcode.ListNode) *leetcode.ListNode {
-	var prev *leetcode.ListNode
+func reverseLinkedList(head *node.ListNode) *node.ListNode {
+	var prev *node.ListNode
 	for head != nil {
 		cur := head
 		head = head.Next
@@ -111,7 +113,7 @@ func reverseLinkedList(head *leetcode.ListNode) *leetcode.ListNode {
 	return prev
 }
 
-func findHalf(head *leetcode.ListNode) *leetcode.ListNode {
+func findHalf(head *node.ListNode) *node.ListNode {
 	slow, fast := head, head
 	for fast.Next != nil && fast.Next.Next != nil {
 		fast = fast.Next.Next
@@ -124,14 +126,14 @@ func findHalf(head *leetcode.ListNode) *leetcode.ListNode {
 // -----------------------------
 // Time complexity: O(n)
 // Space complexity: O(n)
-var front *leetcode.ListNode
+var front *node.ListNode
 
-func isPalindromeRecursive(head *leetcode.ListNode) bool {
+func isPalindromeRecursive(head *node.ListNode) bool {
 	front = head
 	return checkPalindrome(head)
 }
 
-func checkPalindrome(head *leetcode.ListNode) bool {
+func checkPalindrome(head *node.ListNode) bool {
 	// treat nil is valid palindrome
 	if head == nil {
 		return true

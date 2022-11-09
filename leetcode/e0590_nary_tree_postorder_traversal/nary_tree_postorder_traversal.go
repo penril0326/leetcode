@@ -1,17 +1,17 @@
 package narytreepostordertraversal
 
-import "practice/leetcode"
+import "practice/data_structure/node"
 
 // Time complexity: O(n)
 // Space complexity: O(n)
-func postorder(root *leetcode.NaryNode) []int {
+func postorder(root *node.NaryNode) []int {
 	result := make([]int, 0)
 	traversal(root, &result)
 
 	return result
 }
 
-func traversal(root *leetcode.NaryNode, result *[]int) {
+func traversal(root *node.NaryNode, result *[]int) {
 	if root != nil {
 		for _, child := range root.Children {
 			traversal(child, result)
@@ -25,16 +25,16 @@ func traversal(root *leetcode.NaryNode, result *[]int) {
 // Time complexity: O(n)
 // Space complexity: O(n)
 type myStack struct {
-	stack []*leetcode.NaryNode
+	stack []*node.NaryNode
 }
 
 func constructorStack() myStack {
 	return myStack{
-		stack: make([]*leetcode.NaryNode, 0),
+		stack: make([]*node.NaryNode, 0),
 	}
 }
 
-func (s myStack) top() *leetcode.NaryNode {
+func (s myStack) top() *node.NaryNode {
 	if len(s.stack) > 0 {
 		return s.stack[len(s.stack)-1]
 	}
@@ -42,11 +42,11 @@ func (s myStack) top() *leetcode.NaryNode {
 	return nil
 }
 
-func (s *myStack) push(node *leetcode.NaryNode) {
+func (s *myStack) push(node *node.NaryNode) {
 	s.stack = append(s.stack, node)
 }
 
-func (s *myStack) pop() *leetcode.NaryNode {
+func (s *myStack) pop() *node.NaryNode {
 	if len(s.stack) > 0 {
 		top := s.top()
 		s.stack = s.stack[:len(s.stack)-1]
@@ -61,7 +61,7 @@ func (s myStack) isEmpty() bool {
 	return len(s.stack) == 0
 }
 
-func postorderStack(root *leetcode.NaryNode) []int {
+func postorderStack(root *node.NaryNode) []int {
 	if root == nil {
 		return []int{}
 	}

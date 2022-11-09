@@ -1,8 +1,10 @@
 package linkedlistcycle
 
-import "practice/leetcode"
+import (
+	"practice/data_structure/node"
+)
 
-func hasCycle(head *leetcode.ListNode) bool {
+func hasCycle(head *node.ListNode) bool {
 	slow, fast := head, head
 	for (fast != nil) && (fast.Next != nil) {
 		slow = slow.Next

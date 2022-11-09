@@ -1,14 +1,14 @@
 package same_tree
 
 import (
-	"practice/leetcode"
+	"practice/data_structure/node"
 	"testing"
 )
 
 func Test_isSameTree(t *testing.T) {
 	type args struct {
-		p *leetcode.TreeNode
-		q *leetcode.TreeNode
+		p *node.TreeNode
+		q *node.TreeNode
 	}
 	tests := []struct {
 		name string
@@ -18,27 +18,27 @@ func Test_isSameTree(t *testing.T) {
 		{
 			name: "1",
 			args: args{
-				p: &leetcode.TreeNode{
+				p: &node.TreeNode{
 					Val: 1,
-					Left: &leetcode.TreeNode{
+					Left: &node.TreeNode{
 						Val:   2,
 						Left:  nil,
 						Right: nil,
 					},
-					Right: &leetcode.TreeNode{
+					Right: &node.TreeNode{
 						Val:   3,
 						Left:  nil,
 						Right: nil,
 					},
 				},
-				q: &leetcode.TreeNode{
+				q: &node.TreeNode{
 					Val: 1,
-					Left: &leetcode.TreeNode{
+					Left: &node.TreeNode{
 						Val:   2,
 						Left:  nil,
 						Right: nil,
 					},
-					Right: &leetcode.TreeNode{
+					Right: &node.TreeNode{
 						Val:   3,
 						Left:  nil,
 						Right: nil,
@@ -50,27 +50,27 @@ func Test_isSameTree(t *testing.T) {
 		{
 			name: "2",
 			args: args{
-				p: &leetcode.TreeNode{
+				p: &node.TreeNode{
 					Val: 1,
-					Left: &leetcode.TreeNode{
+					Left: &node.TreeNode{
 						Val:   2,
 						Left:  nil,
 						Right: nil,
 					},
-					Right: &leetcode.TreeNode{
+					Right: &node.TreeNode{
 						Val:   1,
 						Left:  nil,
 						Right: nil,
 					},
 				},
-				q: &leetcode.TreeNode{
+				q: &node.TreeNode{
 					Val: 1,
-					Left: &leetcode.TreeNode{
+					Left: &node.TreeNode{
 						Val:   1,
 						Left:  nil,
 						Right: nil,
 					},
-					Right: &leetcode.TreeNode{
+					Right: &node.TreeNode{
 						Val:   2,
 						Left:  nil,
 						Right: nil,

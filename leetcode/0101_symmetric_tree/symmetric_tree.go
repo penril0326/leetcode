@@ -1,8 +1,8 @@
 package symmetrictree_test
 
-import "practice/leetcode"
+import "practice/data_structure/node"
 
-func isSymmetric(root *leetcode.TreeNode) bool {
+func isSymmetric(root *node.TreeNode) bool {
 	if root == nil {
 		return true
 	}
@@ -10,7 +10,7 @@ func isSymmetric(root *leetcode.TreeNode) bool {
 	return isMirror(root.Left, root.Right)
 }
 
-func isMirror(t1 *leetcode.TreeNode, t2 *leetcode.TreeNode) bool {
+func isMirror(t1 *node.TreeNode, t2 *node.TreeNode) bool {
 	if (t1 == nil) && (t2 == nil) {
 		return true
 	}

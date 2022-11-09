@@ -1,13 +1,13 @@
 package maximum_depth
 
 import (
-	"practice/leetcode"
+	"practice/data_structure/node"
 	"testing"
 )
 
 func Test_maxDepth(t *testing.T) {
 	type args struct {
-		root *leetcode.TreeNode
+		root *node.TreeNode
 	}
 	tests := []struct {
 		name string
@@ -17,21 +17,21 @@ func Test_maxDepth(t *testing.T) {
 		{
 			name: "1",
 			args: args{
-				root: &leetcode.TreeNode{
+				root: &node.TreeNode{
 					Val: 3,
-					Left: &leetcode.TreeNode{
+					Left: &node.TreeNode{
 						Val:   9,
 						Left:  nil,
 						Right: nil,
 					},
-					Right: &leetcode.TreeNode{
+					Right: &node.TreeNode{
 						Val: 20,
-						Left: &leetcode.TreeNode{
+						Left: &node.TreeNode{
 							Val:   15,
 							Left:  nil,
 							Right: nil,
 						},
-						Right: &leetcode.TreeNode{
+						Right: &node.TreeNode{
 							Val:   7,
 							Left:  nil,
 							Right: nil,
@@ -44,10 +44,10 @@ func Test_maxDepth(t *testing.T) {
 		{
 			name: "2",
 			args: args{
-				root: &leetcode.TreeNode{
+				root: &node.TreeNode{
 					Val:  1,
 					Left: nil,
-					Right: &leetcode.TreeNode{
+					Right: &node.TreeNode{
 						Val:   2,
 						Left:  nil,
 						Right: nil,
@@ -66,7 +66,7 @@ func Test_maxDepth(t *testing.T) {
 		{
 			name: "3",
 			args: args{
-				root: &leetcode.TreeNode{
+				root: &node.TreeNode{
 					Val:   0,
 					Left:  nil,
 					Right: nil,

@@ -1,8 +1,8 @@
 package same_tree
 
-import "practice/leetcode"
+import "practice/data_structure/node"
 
-func isSameTree(p *leetcode.TreeNode, q *leetcode.TreeNode) bool {
+func isSameTree(p *node.TreeNode, q *node.TreeNode) bool {
 	if (p == nil) && (q == nil) {
 		return true
 	} else if ((p != nil) && (q == nil)) ||

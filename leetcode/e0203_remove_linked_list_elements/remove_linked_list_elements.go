@@ -1,9 +1,9 @@
 package removelinkedlistelements
 
-import "practice/leetcode"
+import "practice/data_structure/node"
 
-func removeElements(head *leetcode.ListNode, val int) *leetcode.ListNode {
-	previous := &leetcode.ListNode{
+func removeElements(head *node.ListNode, val int) *node.ListNode {
+	previous := &node.ListNode{
 		Next: head,
 	}
 
@@ -19,7 +19,7 @@ func removeElements(head *leetcode.ListNode, val int) *leetcode.ListNode {
 	return previous.Next
 }
 
-func removeElementsRecursive(head *leetcode.ListNode, val int) *leetcode.ListNode {
+func removeElementsRecursive(head *node.ListNode, val int) *node.ListNode {
 	if head == nil {
 		return nil
 	}

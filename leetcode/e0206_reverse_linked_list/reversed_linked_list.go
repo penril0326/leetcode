@@ -1,9 +1,9 @@
 package reverselinkedlist
 
-import "practice/leetcode"
+import "practice/data_structure/node"
 
-func reverseList(head *leetcode.ListNode) *leetcode.ListNode {
-	var previous *leetcode.ListNode = nil
+func reverseList(head *node.ListNode) *node.ListNode {
+	var previous *node.ListNode = nil
 	for head != nil {
 		current := head
 		head = head.Next
@@ -14,7 +14,7 @@ func reverseList(head *leetcode.ListNode) *leetcode.ListNode {
 	return previous
 }
 
-func reverseListRecursive(head *leetcode.ListNode) *leetcode.ListNode {
+func reverseListRecursive(head *node.ListNode) *node.ListNode {
 	if (head == nil) || (head.Next == nil) {
 		return head
 	}

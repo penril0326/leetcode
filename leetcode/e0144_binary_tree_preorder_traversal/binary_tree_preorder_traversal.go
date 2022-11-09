@@ -1,29 +1,29 @@
 package binarytreepreordertraversal
 
-import "practice/leetcode"
+import "practice/data_structure/node"
 
-type myStack []*leetcode.TreeNode
+type myStack []*node.TreeNode
 
 func (s myStack) isEmpty() bool {
 	return len(s) == 0
 }
 
-func (s *myStack) Push(node *leetcode.TreeNode) {
+func (s *myStack) Push(n *node.TreeNode) {
 	if s == nil {
-		*s = make([]*leetcode.TreeNode, 0)
+		*s = make([]*node.TreeNode, 0)
 	}
 
-	*s = append(*s, node)
+	*s = append(*s, n)
 }
 
-func (s *myStack) Pop() *leetcode.TreeNode {
+func (s *myStack) Pop() *node.TreeNode {
 	top := (*s)[len(*s)-1]
 	*s = (*s)[:len(*s)-1]
 
 	return top
 }
 
-func preorderTraversal(root *leetcode.TreeNode) []int {
+func preorderTraversal(root *node.TreeNode) []int {
 	if root == nil {
 		return []int{}
 	}
@@ -47,7 +47,7 @@ func preorderTraversal(root *leetcode.TreeNode) []int {
 	return result
 }
 
-func preorderTraversalRecursive(root *leetcode.TreeNode) []int {
+func preorderTraversalRecursive(root *node.TreeNode) []int {
 	result := make([]int, 0)
 	traversal(root, &result)
 
@@ -55,7 +55,7 @@ func preorderTraversalRecursive(root *leetcode.TreeNode) []int {
 }
 
 // root, left ,right
-func traversal(root *leetcode.TreeNode, result *[]int) {
+func traversal(root *node.TreeNode, result *[]int) {
 	if root != nil {
 		*result = append(*result, root.Val)
 		traversal(root.Left, result)
