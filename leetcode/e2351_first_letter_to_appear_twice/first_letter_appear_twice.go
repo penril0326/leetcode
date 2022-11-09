@@ -1,7 +1,7 @@
 package firstlettertoappeartwice
 
 // Time complexity: O(1)
-// Space complexity: O(N)
+// Space complexity: O(1)
 func repeatedCharacter(s string) byte {
 	hash := [26]bool{}
 	for _, r := range s {
