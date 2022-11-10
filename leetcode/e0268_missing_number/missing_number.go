@@ -17,7 +17,7 @@ func missingNumber(nums []int) int {
 	return -1
 }
 
-// One pass
+// One pass, Gauss' Formula
 // Time complexity: O(N)
 // Space complexity: O(1)
 func missingNumber2(nums []int) int {
