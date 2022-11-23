@@ -4,7 +4,9 @@ import "sort"
 
 type runeList []rune
 
-// solution 1: use sort
+// Sort
+// Time complexity: O(N*KlogK), N is length of strs, k is maximum length of strs[i]
+// Space complexity: O(N*K)
 func groupAnagrams(strs []string) [][]string {
 	wordMap := map[string][]string{}
 	for _, str := range strs {
