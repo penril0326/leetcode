@@ -34,3 +34,21 @@ func maximumSum(nums []int) int {
 
 	return ans
 }
+
+// Only hash
+// Time complexity: O(N)
+// Space complexity: O(N)
+func maximumSum2(nums []int) int {
+	hash := make(map[int]int)
+	ans := -1
+	for _, n := range nums {
+		digitSum := digit.SumOfDigit(n)
+		if v, exist := hash[digitSum]; exist {
+			ans = math.Max(ans, v+n)
+		}
+
+		hash[digitSum] = math.Max(hash[digitSum], n)
+	}
+
+	return ans
+}
