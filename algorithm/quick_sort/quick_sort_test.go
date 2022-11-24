@@ -1,6 +1,9 @@
 package quick_sort
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func Test_quickSort(t *testing.T) {
 	type args struct {
@@ -11,6 +14,7 @@ func Test_quickSort(t *testing.T) {
 	tests := []struct {
 		name string
 		args args
+		want []int
 	}{
 		{
 			name: "1",
@@ -19,12 +23,16 @@ func Test_quickSort(t *testing.T) {
 				left:  0,
 				right: 5,
 			},
+			want: []int{1, 2, 3, 4, 5, 6},
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			quickSort(tt.args.nums, tt.args.left, tt.args.right)
-			t.Logf("%v", tt.args.nums)
+			QuickSort(tt.args.nums, tt.args.left, tt.args.right)
+			if !reflect.DeepEqual(tt.args.nums, tt.want) {
+				t.Errorf("quickSort() = %v, want %v", tt.args.nums, tt.want)
+			}
+
 		})
 	}
 }
