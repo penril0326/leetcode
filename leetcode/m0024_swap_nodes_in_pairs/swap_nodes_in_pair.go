@@ -25,3 +25,25 @@ func swapPairs(head *node.ListNode) *node.ListNode {
 
 	return first.Next
 }
+
+// Recursive
+// Time: O(N)
+// Space: O(N)
+func swapPairs2(head *node.ListNode) *node.ListNode {
+	if (head == nil) || (head.Next == nil) {
+		return head
+	}
+
+	first := head
+	second := head.Next
+	// first -> second -> (tail)
+
+	first.Next = swapPairs(second.Next)
+	// first -> (swap)
+	// second -> ???
+
+	second.Next = first
+	// second -> first -> (swap)
+
+	return second
+}
