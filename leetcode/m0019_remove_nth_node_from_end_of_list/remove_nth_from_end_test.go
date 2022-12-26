@@ -1,19 +1,20 @@
 package remove_nth
 
 import (
+	"practice/data_structure/node"
 	"testing"
 )
 
 func Test_removeNthFromEnd(t *testing.T) {
-	head := ListNode{
+	head := node.ListNode{
 		Val: 1,
-		Next: &ListNode{
+		Next: &node.ListNode{
 			Val: 2,
-			Next: &ListNode{
+			Next: &node.ListNode{
 				Val: 3,
-				Next: &ListNode{
+				Next: &node.ListNode{
 					Val: 4,
-					Next: &ListNode{
+					Next: &node.ListNode{
 						Val:  5,
 						Next: nil,
 					},

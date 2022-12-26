@@ -1,32 +1,31 @@
 package remove_nth
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+import "practice/data_structure/node"
 
-func removeNthFromEnd(head *ListNode, n int) *ListNode {
-	node := &ListNode{
-		Val:  0,
-		Next: head,
+// Time: O(N)
+// Space: O(1)
+func removeNthFromEnd(head *node.ListNode, n int) *node.ListNode {
+	if head == nil {
+		return nil
 	}
 
-	targetPrevious := node
-	current := head
-
+	fast := head
 	for n > 0 {
-		current = current.Next
+		fast = fast.Next
 		n--
 	}
 
-	for current != nil {
-		current = current.Next
-		targetPrevious = targetPrevious.Next
+	dummy := new(node.ListNode)
+	dummy.Next = head
+	slow := dummy
+	for fast != nil {
+		fast = fast.Next
+		slow = slow.Next
 	}
 
-	if nil != targetPrevious.Next {
-		targetPrevious.Next = targetPrevious.Next.Next
+	if slow.Next != nil {
+		slow.Next = slow.Next.Next
 	}
 
-	return node.Next
+	return dummy.Next
 }
