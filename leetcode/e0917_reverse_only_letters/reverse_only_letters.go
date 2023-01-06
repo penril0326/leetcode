@@ -1,5 +1,10 @@
 package reverseonlyletters
 
+import (
+	"bytes"
+	"practice/data_structure/stack"
+)
+
 // Time: O(N)
 // Space: O(N)
 func reverseOnlyLetters(s string) string {
@@ -18,6 +23,29 @@ func reverseOnlyLetters(s string) string {
 	}
 
 	return string(ans)
+}
+
+// Using stack
+// Time: O(N)
+// Space: O(N)
+func reverseOnlyLettersStack(s string) string {
+	st := stack.NewStack()
+	for i := 0; i < len(s); i++ {
+		if isLetter(s[i]) {
+			st.Push(s[i])
+		}
+	}
+
+	var ans bytes.Buffer
+	for i := 0; i < len(s); i++ {
+		if isLetter(s[i]) {
+			ans.WriteByte(st.Pop().(byte))
+		} else {
+			ans.WriteByte(s[i])
+		}
+	}
+
+	return ans.String()
 }
 
 func isLetter(c byte) bool {
