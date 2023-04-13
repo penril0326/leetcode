@@ -9,6 +9,7 @@ import (
 // Space: O(D), which D is tree diameter.
 // For instance, a completely binary tree [1, 2, 3, 4, 5, 6, 7] has a diameter 4, the longest distance is from node 4 to node 7.
 func rightSideView(root *node.TreeNode) []int {
+	// BFS
 	if root == nil {
 		return []int{}
 	}
@@ -35,4 +36,33 @@ func rightSideView(root *node.TreeNode) []int {
 	}
 
 	return result
+}
+
+// Time: O(N)
+// Space: O(D), which D is tree diameter.
+func rightSideViewDFS(root *node.TreeNode) []int {
+	// DFS
+	if root == nil {
+		return []int{}
+	}
+
+	dict := map[int]int{}
+	dfs(root, 0, &dict)
+	result := make([]int, len(dict))
+	for k, v := range dict {
+		result[k] = v
+	}
+
+	return result
+}
+
+func dfs(n *node.TreeNode, depth int, m *map[int]int) {
+	if n == nil {
+		return
+	}
+
+	(*m)[depth] = n.Val
+
+	dfs(n.Left, depth+1, m)
+	dfs(n.Right, depth+1, m)
 }
