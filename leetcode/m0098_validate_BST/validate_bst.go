@@ -1,6 +1,9 @@
 package validatebst
 
-import "practice/data_structure/node"
+import (
+	"math"
+	"practice/data_structure/node"
+)
 
 // Time: O(N)
 // Space: O(2N) = O(N)
@@ -30,4 +33,26 @@ func inOrder(node *node.TreeNode, list *[]int) {
 	inOrder(node.Left, list)
 	*list = append(*list, node.Val)
 	inOrder(node.Right, list)
+}
+
+// Time: O(N)
+// Space: O(N)
+// DFS range check
+func isValidBST2(root *node.TreeNode) bool {
+	return dfs(root, math.MinInt, math.MaxInt)
+}
+
+func dfs(node *node.TreeNode, low, high int) bool {
+	if node == nil {
+		return true
+	}
+
+	if (node.Val <= low) || (node.Val >= high) {
+		return false
+	}
+
+	isLeftBST := dfs(node.Left, low, node.Val)
+	isRightBST := dfs(node.Right, node.Val, high)
+
+	return isLeftBST && isRightBST
 }
