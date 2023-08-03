@@ -2,6 +2,8 @@ package maximum_depth
 
 import "practice/data_structure/node"
 
+// Time: O(n)
+// Space:O(n)
 func maxDepth(root *node.TreeNode) int {
 	if root == nil {
 		return 0
