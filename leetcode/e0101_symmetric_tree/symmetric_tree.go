@@ -2,6 +2,8 @@ package symmetrictree_test
 
 import "practice/data_structure/node"
 
+// Time: O(n)
+// Space: O(n)
 func isSymmetric(root *node.TreeNode) bool {
 	if root == nil {
 		return true
