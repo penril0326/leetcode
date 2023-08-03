@@ -2,6 +2,8 @@ package same_tree
 
 import "practice/data_structure/node"
 
+// Time: O(n)
+// Space: O(n)
 func isSameTree(p *node.TreeNode, q *node.TreeNode) bool {
 	if (p == nil) && (q == nil) {
 		return true
