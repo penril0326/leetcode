@@ -1,6 +1,8 @@
 package kthlargestelementinastream
 
-import "container/heap"
+import (
+	"container/heap"
+)
 
 type KthLargest struct {
 	vals *myHeap
@@ -58,11 +60,11 @@ func (h *myHeap) Pop() interface{} {
 		panic("Pop no element in heap")
 	}
 
-	top := h.Top()
 	lastIdx := h.Len() - 1
+	root := (*h)[lastIdx]
 	*h = (*h)[:lastIdx]
 
-	return top
+	return root
 }
 
 func (h myHeap) Top() int {
