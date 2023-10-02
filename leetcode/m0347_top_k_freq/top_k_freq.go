@@ -11,6 +11,8 @@ type item struct {
 	count int
 }
 
+// Time: O(nlogk)
+// Space: O(n)
 func topKFrequent(nums []int, k int) []int {
 	countMap := map[int]int{}
 	for _, v := range nums {
