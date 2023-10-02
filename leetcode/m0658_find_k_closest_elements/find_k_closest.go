@@ -5,9 +5,25 @@ import (
 	"sort"
 )
 
+// Time: O(log(n-k))
+// Space: O(1)
+func findClosestElements(arr []int, k int, x int) []int {
+	l, r := 0, len(arr)-k
+	for l < r {
+		mid := (l + r) >> 1
+		if x-arr[mid] > arr[mid+k]-x {
+			l = mid + 1
+		} else {
+			r = mid
+		}
+	}
+
+	return arr[l : l+k]
+}
+
 // Time: O((N+k)*logk), N is size of arr
 // Space: O(k)
-func findClosestElements(arr []int, k int, x int) []int {
+func findClosestElementsHeap(arr []int, k int, x int) []int {
 	q := &pq{}
 	for _, v := range arr {
 		temp := [2]int{abs(v - x), v}
