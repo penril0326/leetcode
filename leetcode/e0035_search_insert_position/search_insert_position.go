@@ -1,5 +1,7 @@
 package searchinsertposition
 
+// Time: O(logn)
+// Space: O(1)
 func searchInsert(nums []int, target int) int {
 	length := len(nums)
 	if length == 0 {
