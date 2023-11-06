@@ -2,6 +2,8 @@ package minimumspeedtoarriceontime
 
 import "math"
 
+// Time: O(k*logN), k is length of dist, n is the maximum possible answer.
+// Space: O(1)
 func minSpeedOnTime(dist []int, hour float64) int {
 	if len(dist) > int(math.Ceil(hour)) {
 		return -1
