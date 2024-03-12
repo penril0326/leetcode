@@ -3,11 +3,11 @@ package permutations
 // Time: O(n^2*n!), n is length of nums
 func permute(nums []int) [][]int {
 	ans := [][]int{}
-	backtracing([]int{}, &ans, nums)
+	backtracking([]int{}, &ans, nums)
 	return ans
 }
 
-func backtracing(curr []int, ans *[][]int, nums []int) {
+func backtracking(curr []int, ans *[][]int, nums []int) {
 	if len(curr) == len(nums) {
 		new := make([]int, len(curr))
 		copy(new, curr)
@@ -18,7 +18,7 @@ func backtracing(curr []int, ans *[][]int, nums []int) {
 	for _, n := range nums {
 		if !IsContain(curr, n) {
 			curr = append(curr, n)
-			backtracing(curr, ans, nums)
+			backtracking(curr, ans, nums)
 			curr = curr[:len(curr)-1]
 		}
 	}
