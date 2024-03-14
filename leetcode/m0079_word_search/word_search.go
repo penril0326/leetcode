@@ -1,5 +1,7 @@
 package wordsearch
 
+// Time: O(m*n*3^L), where L is length of word
+// Space: O(L) if we use set to store the node we seen; O(m*n) if we use 2D boolean array to store whole board state.
 func exist(board [][]byte, word string) bool {
 	seen := make([][]bool, len(board))
 	for i := 0; i < len(board); i++ {
